@@ -6,14 +6,14 @@ const randstring = require('randomstring');
 const sizeOf = require('object-sizeof');
 const mysqlAdmin = require('./lib/mysqladmin');
 const client = require('./db/mongo');
-const fullFilePath = 'stalksamples/2021_04_03_16_49_06-mysqladmin';
+const madminFile = 'stalksamples/2021_04_03_16_49_06-mysqladmin';
 
 async function randfile() {
     return util.format('/tmp/%s.txt',randstring.generate(12));
 }
 
-async function getUnixTime(fullFilePath) {
-    const fn = fullFilePath.split('/');
+async function getUnixTime(madminFile) {
+    const fn = madminFile.split('/');
     const fileName = fn[fn.length-1];
     var dateObject = lodash.trim(fileName,'-mysqladmin').split('_');
     var dateString = util.format('%s-%s-%s %s:%s:%s.000',dateObject[0],dateObject[1],dateObject[2],dateObject[3],dateObject[4],dateObject[5]);
@@ -24,15 +24,15 @@ async function main() {
     // const stalk = client.db('ptstalk').collection('mysqladmins');
     var outfile1 = await randfile();
     var outfile2 = await randfile();
-    var unixTime = await getUnixTime(fullFilePath);
+    var unixTime = await getUnixTime(madminFile);
 
-    let origFile = new Array();
+    let madmin = new Array();
     try {
         let re = /(used_connections_time|wsrep_ready|provider_name|cluster_status|state_comment|flow_control_status|flow_control_interval|snapshot_gtid|snapshot_file|dump_status|load_status|resize_status|cache_mode|Rsa_public|tls|version|address|cert_deps|uuid|wsrep_evs|Variable_name|\+---|Ssl_server|Ssl_cipher|Caching_sha2|END)/i;
-        fs.readFileSync(fullFilePath,'utf8').split('\n').forEach( function(e) {
+        fs.readFileSync(madminFile,'utf8').split('\n').forEach( function(e) {
             var chk = re.exec(e);
             if (!chk) {
-                origFile.push(lodash.words(e,/\w+\_\w+|\w+|\d+/g));
+                madmin.push(lodash.words(e,/\w+\_\w+|\w+|\d+/g));
             }
         })
     } catch (e) {
@@ -40,7 +40,7 @@ async function main() {
     }
 
     let data = new Array();
-    origFile.forEach( function(e) {
+    madmin.forEach( function(e) {
         if (e.length === 2 && !isNaN(e[1]) ) {
             data.push(e)
         }
