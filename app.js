@@ -22,7 +22,8 @@ async function getUnixTime(fullFilePath) {
 
 async function main() {
     // const stalk = client.db('ptstalk').collection('mysqladmins');
-    var outfile = await randfile();
+    var outfile1 = await randfile();
+    var outfile2 = await randfile();
     var unixTime = await getUnixTime(fullFilePath);
 
     let origFile = new Array();
@@ -45,20 +46,8 @@ async function main() {
         }
     });
 
-    console.log(sizeOf(data))
-    // let data = '';
-    // for (var sp in origFile) {
-    //     var t1 = origFile[sp].split(' ').filter(function(e) { return e !== '|' && e !== '' });
-    //     if ((typeof t1[0]) === 'undefined' || (typeof t1[1]) === 'undefined') { continue };
-    //     data += util.format("%s %d\n", t1[0], t1[1]);
-    // }
-
-    // data = data.split('\n').filter( function(s) {
-    //     if (s !== 'NaN') { return s };
-    // })
-
-    // await mysqlAdmin.parseFile(data, outfile, unixTime);
-    // await mysqlAdmin.getDeltas(data,outfile,unixTime);
+    await mysqlAdmin.parseFile(data, outfile1, unixTime);
+    await mysqlAdmin.getDeltas(data, outfile2, unixTime);
 
     // for (var i=0; i < doc.length; i++) {
     //     try {
