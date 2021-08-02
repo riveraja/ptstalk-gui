@@ -5,7 +5,7 @@ const lodash = require('lodash');
 const randstring = require('randomstring');
 const sizeOf = require('object-sizeof');
 const mysqlAdmin = require('./lib/mysqladmin');
-const client = require('./db/mongo');
+const loadData = require('./lib/load');
 const madminFile = 'stalksamples/2021_04_03_16_49_06-mysqladmin';
 
 async function randfile() {
@@ -21,7 +21,6 @@ async function getUnixTime(madminFile) {
 }
 
 async function main() {
-    // const stalk = client.db('ptstalk').collection('mysqladmins');
     var outfile1 = await randfile();
     var outfile2 = await randfile();
     var unixTime = await getUnixTime(madminFile);
@@ -49,21 +48,11 @@ async function main() {
     await mysqlAdmin.parseFile(data, outfile1, unixTime);
     await mysqlAdmin.getDeltas(data, outfile2, unixTime);
 
-    // for (var i=0; i < doc.length; i++) {
-    //     try {
-    //         await insertOneDocument(stalk, doc[i]);
-    //     } catch(e) {
-    //         // console.log(doc[i]); // DEBUG only
-    //         console.log(e.errmsg);
-    //     }
-    // }
-    // await client.close();
+    await loadData.globalStats(outfile1);
+    await loadData.globalStats(outfile2);
+
+    
     process.exit(0)
 }
 
 main().catch(console.error);
-
-// async function insertOneDocument(stalk,row) {
-//     const result = await stalk.insertOne(row);
-//     // console.log(result.insertedId); // DEBUG only
-// }
