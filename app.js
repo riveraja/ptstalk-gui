@@ -20,6 +20,12 @@ async function getUnixTime(madminFile) {
     return Math.floor(new Date(dateString).getTime()/1000) + "000";
 }
 
+async function rmtmp(files=[]) {
+    for (var f in files) {
+        fs.rmSync(files[f]);
+    }
+}
+
 async function main() {
     var outfile1 = await randfile();
     var outfile2 = await randfile();
@@ -51,6 +57,7 @@ async function main() {
     await loadData.globalStats(outfile1);
     await loadData.globalStats(outfile2);
 
+    await rmtmp([outfile1, outfile2]);
     
     process.exit(0)
 }
