@@ -6,7 +6,7 @@ const randstring = require('randomstring');
 const sizeOf = require('object-sizeof');
 const mysqlAdmin = require('./lib/mysqladmin');
 const loadData = require('./lib/load');
-const madminFile = 'stalksamples/2021_04_03_16_49_06-mysqladmin';
+// const madminFile = 'stalksamples/2021_04_03_16_49_06-mysqladmin';
 
 async function randfile() {
     return util.format('/tmp/%s.txt',randstring.generate(12));
@@ -27,37 +27,51 @@ async function rmtmp(files=[]) {
 }
 
 async function main() {
-    var outfile1 = await randfile();
-    var outfile2 = await randfile();
-    var unixTime = await getUnixTime(madminFile);
-
-    let madmin = new Array();
-    try {
-        let re = /(used_connections_time|wsrep_ready|provider_name|cluster_status|state_comment|flow_control_status|flow_control_interval|snapshot_gtid|snapshot_file|dump_status|load_status|resize_status|cache_mode|Rsa_public|tls|version|address|cert_deps|uuid|wsrep_evs|Variable_name|\+---|Ssl_server|Ssl_cipher|Caching_sha2|END)/i;
-        fs.readFileSync(madminFile,'utf8').split('\n').forEach( function(e) {
-            var chk = re.exec(e);
-            if (!chk) {
-                madmin.push(lodash.words(e,/\w+\_\w+|\w+|\d+/g));
-            }
-        })
-    } catch (e) {
-        console.log(e);
-    }
-
-    let data = new Array();
-    madmin.forEach( function(e) {
-        if (e.length === 2 && !isNaN(e[1]) ) {
-            data.push(e)
+    const Path = 'stalksamples/';
+    var fileList = [];
+    fs.readdirSync(Path, 'utf8').forEach( function(file) {
+        let re = /\-mysqladmin/g
+        if (re.exec(file)) {
+            fileList.push(util.format('%s%s', Path, file));
         }
-    });
+    })
+    
+    for await (var fileToParse of fileList) {
 
-    await mysqlAdmin.parseFile(data, outfile1, unixTime);
-    await mysqlAdmin.getDeltas(data, outfile2, unixTime);
+        var madminFile = fileToParse;
+        var outfile1 = await randfile();
+        var outfile2 = await randfile();
+        var unixTime = await getUnixTime(madminFile);
 
-    await loadData.globalStats(outfile1);
-    await loadData.globalStats(outfile2);
+        let madmin = new Array();
+        try {
+            let re = /(used_connections_time|wsrep_ready|provider_name|cluster_status|state_comment|flow_control_status|flow_control_interval|snapshot_gtid|snapshot_file|dump_status|load_status|resize_status|cache_mode|Rsa_public|tls|version|address|cert_deps|uuid|wsrep_evs|Variable_name|\+---|Ssl_server|Ssl_cipher|Caching_sha2|END)/i;
+            fs.readFileSync(madminFile,'utf8').split('\n').forEach( function(e) {
+                var chk = re.exec(e);
+                if (!chk) {
+                    madmin.push(lodash.words(e,/\w+\_\w+|\w+|\d+/g));
+                }
+            })
+        } catch (e) {
+            console.log(e);
+        }
 
-    await rmtmp([outfile1, outfile2]);
+        let data = new Array();
+        madmin.forEach( function(e) {
+            if (e.length === 2 && !isNaN(e[1]) ) {
+                data.push(e)
+            }
+        });
+
+        await mysqlAdmin.parseFile(data, outfile1, unixTime);
+        await mysqlAdmin.getDeltas(data, outfile2, unixTime);
+
+        await loadData.globalStats(outfile1);
+        await loadData.globalStats(outfile2);
+
+        await rmtmp([outfile1, outfile2]);
+
+    };
     
     process.exit(0)
 }
