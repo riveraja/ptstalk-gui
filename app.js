@@ -3,10 +3,8 @@ const fs = require('fs');
 const util = require('util');
 const lodash = require('lodash');
 const randstring = require('randomstring');
-const sizeOf = require('object-sizeof');
 const mysqlAdmin = require('./lib/mysqladmin');
 const loadData = require('./lib/load');
-// const madminFile = 'stalksamples/2021_04_03_16_49_06-mysqladmin';
 
 async function randfile() {
     return util.format('/tmp/%s.txt',randstring.generate(12));
