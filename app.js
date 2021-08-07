@@ -1,10 +1,20 @@
+#!/usr/bin/env node
+
 'use strict'
 const fs = require('fs');
 const util = require('util');
 const lodash = require('lodash');
 const randstring = require('randomstring');
+const { program } = require('commander');
 const mysqlAdmin = require('./lib/mysqladmin');
 const loadData = require('./lib/load');
+
+program
+    .version('0.1.0')
+    .option('-D, --dir <directory>', 'Path to pt-stalk files')
+    .option('-t, --task <task>', 'ServiceNow ticket number', 'percona');
+
+program.parse(process.argv);
 
 async function randfile() {
     return util.format('/tmp/%s.txt',randstring.generate(12));
@@ -25,7 +35,10 @@ async function rmtmp(files=[]) {
 }
 
 async function main() {
-    const Path = 'stalksamples/';
+    const options = program.opts();
+    const Path = `${options.dir}`;
+    const task = `${options.task}`;
+
     var fileList = [];
     fs.readdirSync(Path, 'utf8').forEach( function(file) {
         let re = /\-mysqladmin/g
@@ -64,8 +77,8 @@ async function main() {
         await mysqlAdmin.parseFile(data, outfile1, unixTime);
         await mysqlAdmin.getDeltas(data, outfile2, unixTime);
 
-        await loadData.globalStats(outfile1);
-        await loadData.globalStats(outfile2);
+        await loadData.globalStats(outfile1, task);
+        await loadData.globalStats(outfile2, task);
 
         await rmtmp([outfile1, outfile2]);
 
