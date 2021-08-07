@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "commander": "^8.1.0",
     "dotenv": "^10.0.0",
     "lodash": "^4.17.21",
     "mongodb": "^3.6.10",
@@ -17,5 +18,8 @@
   },
   "devDependencies": {
     "object-sizeof": "^1.6.1"
+  },
+  "bin": {
+    "stalk-parser": "./app.js"
   }
 }
