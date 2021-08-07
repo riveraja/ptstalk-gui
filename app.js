@@ -29,9 +29,10 @@ async function getUnixTime(madminFile) {
 }
 
 async function rmtmp(files=[]) {
-    for (var f in files) {
-        fs.rmSync(files[f]);
-    }
+    // for (var f in files) {
+    //     fs.rmSync(files[f]);
+    // }
+    files.map( file => fs.rmSync(file));
 }
 
 async function main() {
