@@ -38,14 +38,6 @@ async function main() {
     const Path = `${options.dir}`;
     const task = `${options.task}`;
 
-    // var fileList = [];
-    // fs.readdirSync(Path, 'utf8').forEach( function(file) {
-    //     let re = /(\-mysqladmin|\-processlist)/g
-    //     if (re.exec(file)) {
-    //         fileList.push(util.format('%s%s', Path, file));
-    //     }
-    // })
-
     var fileByDate = [];
     fs.readdirSync(Path, 'utf8').forEach( function(file) {
         fileByDate.push( file.replace(/(\-\w+)/g, '') );
@@ -54,6 +46,8 @@ async function main() {
     var uniqueDates = lodash.uniq(fileByDate);
 
     for await (var uniqueDate of uniqueDates) {
+
+        var outfiles = [];
 
         var madminFile = util.format("%s%s-mysqladmin", Path, uniqueDate);
         var unixTime = await getUnixTime(madminFile);
@@ -80,8 +74,10 @@ async function main() {
 
         var outfile1 = await randfile();
         await mysqlAdmin.parseFile(data, outfile1, unixTime);
+        outfiles.push(outfile1);
         var outfile2 = await randfile();
         await mysqlAdmin.getDeltas(data, outfile2, unixTime);
+        outfiles.push(outfile2);
 
         var processlistFile = util.format("%s%s-processlist", Path, uniqueDate);
 
@@ -106,12 +102,13 @@ async function main() {
 
         var outfile3 = await randfile();
         await processList.getProcesses(rows, outfile1, outfile3);
+        outfiles.push(outfile3);
 
         await loadData.globalStats(outfile1, task);
         await loadData.globalStats(outfile2, task);
         await loadData.processList(outfile3, task);
 
-        await rmtmp([outfile1, outfile2, outfile3]);
+        await rmtmp(outfiles);
     };
 
     
