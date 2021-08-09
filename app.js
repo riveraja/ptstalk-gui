@@ -11,7 +11,7 @@ const processList = require('./lib/processlist');
 const loadData = require('./lib/load');
 
 program
-    .version('0.1.0')
+    .version('0.2.0')
     .option('-D, --dir <directory>', 'Path to pt-stalk files')
     .option('-t, --task <task>', 'ServiceNow ticket number', 'percona');
 
