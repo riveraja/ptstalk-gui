@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/tablesort.css" rel="stylesheet">
+    <title>Processlist</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">MySQL Processlist</a>
+      </div>
+    </nav>
+    <table class="table" id="processlist">
+      <thead>
+        <tr>
+          each column in columns 
+            th= column.text
+        </tr>
+      </thead>
+      <tbody>
+        each capture in captures
+          each row in capture.rows
+            <tr>
+              each col in row
+                td= col
+            </tr>
+      </tbody>
+    </table>
+    <script src='/tablesort/tablesort.min.js'></script>
+    <script src='/tablesort/sorts/tablesort.number.min.js'></script>
+    <script src='/tablesort/sorts/tablesort.date.min.js'></script>
+    script. 
+      new Tablesort(document.getElementById('processlist')); 
+  </body>
+</html>
