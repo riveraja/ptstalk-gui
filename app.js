@@ -45,6 +45,7 @@ async function main() {
     
     var uniqueDates = lodash.uniq(fileByDate);
 
+    var counter = 1;
     for await (var uniqueDate of uniqueDates) {
 
         var outfiles = [];
@@ -73,12 +74,11 @@ async function main() {
         });
 
         var outfile1 = await randfile();
-        console.log("Parsing files");
+        console.log("Parsing files %s of %s sets", counter, uniqueDates.length);
         await mysqlAdmin.parseFile(data, outfile1, unixTime);
         outfiles.push(outfile1);
 
-        console.log(util.format("Start time: %s", JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['startTime']));
-        console.log(util.format("Stop time: %s", JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime']));
+        console.log(util.format("Start: %s | Stop: %s", JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['startTime']), JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime']);
 
         var outfile2 = await randfile();
         await mysqlAdmin.getDeltas(data, outfile2, unixTime);
@@ -119,6 +119,7 @@ async function main() {
         await loadData.processListRows(outfile4, task);
 
         await rmtmp(outfiles);
+        counter += 1;
     };
 
     
