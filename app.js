@@ -9,6 +9,7 @@ const { program } = require('commander');
 const mysqlAdmin = require('./lib/mysqladmin');
 const processList = require('./lib/processlist');
 const loadData = require('./lib/load');
+const api = require('./api');
 
 program
     .version('0.2.0')
@@ -122,8 +123,17 @@ async function main() {
         counter += 1;
     };
 
-    
-    process.exit(0)
+    api.api(
+        process.env.DBUSER,
+        process.env.DBPASS,
+        process.env.DBHOST,
+        process.env.DBPORT,
+        task,
+        process.env.APIHOST,
+        process.env.APIPORT
+    );
+
+    // process.exit(0)
 }
 
 main().catch(console.error);
