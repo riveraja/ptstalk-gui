@@ -32,13 +32,13 @@ exports.api = (dbUser, dbPassword, dbHost, dbPort, dbName, apiHost, apiPort) => 
   .catch(() => {
     debug(`Connection failed to mongodb://${dbHost}:${dbPort}`);
   });
-  app.set('views', path.join(__dirname, 'src/views'));
+  app.set('views', path.join(__dirname, 'api/src/views'));
   app.set('view engine', 'pug');
 
   app.use(bodyParser.json());
   app.use(morgan('tiny')); 
 
-  app.use("/public", express.static(path.join(__dirname, "public")));
+  app.use("/public", express.static(path.join(__dirname, "api/public")));
   app.use("/bootstrap", express.static(path.join(__dirname, "node_modules/bootstrap/dist")));
   app.use("/tablesort", express.static(path.join(__dirname, "node_modules/tablesort/dist")));
 

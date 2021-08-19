@@ -21,7 +21,7 @@ exports.index = (req, res) => {
   }
   , function (err, captures) {
     debug(`Captures: ${captures.length}`);
-    if (captures > 0) {
+    if (captures.length > 0) {
       res.render('index', { columns: captures[0].columns, captures: captures});
     }
     else {
