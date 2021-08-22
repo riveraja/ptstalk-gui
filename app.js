@@ -12,7 +12,7 @@ const loadData = require('./lib/load');
 const api = require('./api');
 
 program
-    .version('0.2.0')
+    .version('0.2.1')
     .option('-D, --dir <directory>', 'Path to pt-stalk files')
     .option('-t, --task <task>', 'ServiceNow ticket number', 'percona');
 
