@@ -1,0 +1,8 @@
+{
+  "name":"JSON",
+  "typeName":"JSON",
+  "type":"simpod-json-datasource",
+  "url":"http://0.0.0.0:9000/api",
+  "access":"proxy",
+  "basicAuth":false
+}

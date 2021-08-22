@@ -2,17 +2,7 @@ yum install https://dl.grafana.com/oss/release/grafana-8.1.2-1.x86_64.rpm
 grafana-cli plugins install simpod-json-datasource
 systemctl start grafana-server
 
-# cat add-json-datasource
-# {
-#   "name":"JSON",
-#   "typeName":"JSON",
-#   "type":"simpod-json-datasource",
-#   "url":"http://0.0.0.0:9000/api",
-#   "access":"proxy",
-#   "basicAuth":false
-# }
-
-curl -s -u "admin:admin" -H "Content-type: application/json" http://localhost:3000/api/datasources -d @add-json-datasource
+curl -s -u "admin:admin" -H "Accept: application/json" -H "Content-type: application/json" http://localhost:3000/api/datasources -d @add-json-datasource.json
 
 # curl -s http://admin:admin@localhost:3000/api/dashboards/uid/:uid | jq . > ptstalk-dashboard.json
 
