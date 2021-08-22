@@ -1,4 +1,4 @@
-yum install epel-release vim less jq git -y
+yum install epel-release vim less jq -y
 yum install -y https://dl.grafana.com/oss/release/grafana-8.1.2-1.x86_64.rpm
 grafana-cli plugins install simpod-json-datasource
 systemctl start grafana-server
