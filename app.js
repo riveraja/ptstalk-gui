@@ -86,9 +86,9 @@ async function main() {
         var stopT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime'];
         console.log(util.format("Start: %s | Stop: %s", startT, stopT));
 
-        if ( count === 1 ) {
+        if ( counter === 1 ) {
             initTime = startT;
-        } else if ( count === uniqueDates.length ) {
+        } else if ( counter === uniqueDates.length ) {
             endTime = stopT;
         }
 
