@@ -78,13 +78,12 @@ async function main() {
         });
 
         var outfile1 = await randfile();
-        console.log("Parsing files %s of %s sets", counter, uniqueDates.length);
         await mysqlAdmin.parseFile(data, outfile1, unixTime);
         outfiles.push(outfile1);
 
         var startT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['startTime'];
         var stopT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime'];
-        console.log(util.format("Start: %s | Stop: %s", startT, stopT));
+        console.log("Parsing files %s of %s sets - Start: %s | Stop: %s", counter, uniqueDates.length, startT, stopT);
 
         if ( counter === 1 ) {
             initTime = startT;
