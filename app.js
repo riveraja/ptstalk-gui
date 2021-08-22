@@ -46,6 +46,9 @@ async function main() {
     
     var uniqueDates = lodash.uniq(fileByDate);
 
+    var initTime = 0;
+    var endTime = 0;
+
     var counter = 1;
     for await (var uniqueDate of uniqueDates) {
 
@@ -79,7 +82,15 @@ async function main() {
         await mysqlAdmin.parseFile(data, outfile1, unixTime);
         outfiles.push(outfile1);
 
-        console.log(util.format("Start: %s | Stop: %s", JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['startTime']), JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime']);
+        var startT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['startTime'];
+        var stopT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime'];
+        console.log(util.format("Start: %s | Stop: %s", startT, stopT));
+
+        if ( count === 1 ) {
+            initTime = startT;
+        } else if ( count === uniqueDates.length ) {
+            endTime = stopT;
+        }
 
         var outfile2 = await randfile();
         await mysqlAdmin.getDeltas(data, outfile2, unixTime);
@@ -133,6 +144,8 @@ async function main() {
         process.env.APIPORT
     );
 
+    var grafana_url = "http://localhost:3000/d/percona/pt-stalk-dashboard?orgId=1&from=%s&to=%s"
+    console.log(util.format(grafana_url, initTime, endTime));
     // process.exit(0)
 }
 

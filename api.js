@@ -49,6 +49,3 @@ exports.api = (dbUser, dbPassword, dbHost, dbPort, dbName, apiHost, apiPort) => 
     debug(`API running on ${chalk.green(apiPort)}`);
   });
 }
-
-
-
