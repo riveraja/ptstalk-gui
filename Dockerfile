@@ -7,7 +7,7 @@ yum install -y https://dl.grafana.com/oss/release/grafana-8.1.2-1.x86_64.rpm; \
 service grafana-server start; \
 grafana-cli plugins install simpod-json-datasource; \
 service grafana-server restart; \
-git clone -b add-dockerfile https://github.com/riveraja/ptstalk-gui /opt/ptstalk-gui; \
+git clone https://github.com/riveraja/ptstalk-gui /opt/ptstalk-gui; \
 yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm -y; \
 percona-release enable psmdb-44; \
 yum install percona-server-mongodb -y; \
