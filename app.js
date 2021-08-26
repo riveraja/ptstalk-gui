@@ -12,7 +12,7 @@ const loadData = require('./lib/load');
 const api = require('./api');
 
 program
-    .version('0.2.0')
+    .version('0.2.1')
     .option('-D, --dir <directory>', 'Path to pt-stalk files')
     .option('-t, --task <task>', 'ServiceNow ticket number', 'percona');
 
@@ -46,6 +46,9 @@ async function main() {
     
     var uniqueDates = lodash.uniq(fileByDate);
 
+    var initTime = 0;
+    var endTime = 0;
+
     var counter = 1;
     for await (var uniqueDate of uniqueDates) {
 
@@ -75,11 +78,18 @@ async function main() {
         });
 
         var outfile1 = await randfile();
-        console.log("Parsing files %s of %s sets", counter, uniqueDates.length);
         await mysqlAdmin.parseFile(data, outfile1, unixTime);
         outfiles.push(outfile1);
 
-        console.log(util.format("Start: %s | Stop: %s", JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['startTime']), JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime']);
+        var startT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['startTime'];
+        var stopT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime'];
+        console.log("Parsing files %s of %s sets - Start: %s | Stop: %s", counter, uniqueDates.length, startT, stopT);
+
+        if ( counter === 1 ) {
+            initTime = startT;
+        } else if ( counter === uniqueDates.length ) {
+            endTime = stopT;
+        }
 
         var outfile2 = await randfile();
         await mysqlAdmin.getDeltas(data, outfile2, unixTime);
@@ -133,6 +143,10 @@ async function main() {
         process.env.APIPORT
     );
 
+    const grafana_url = "http://localhost:3000/d/percona/pt-stalk-dashboard?orgId=1&from=%s&to=%s"
+    const table_url = "http://localhost:%s/table?from=%s&to=%s"
+    console.log(util.format(grafana_url, initTime, endTime));
+    console.log(util.format(table_url, process.env.APIPORT, initTime, endTime));
     // process.exit(0)
 }
 
