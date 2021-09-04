@@ -10,7 +10,7 @@ exports.index = (req, res) => {
 }
 
 exports.search = (req, res) => {
-  Capture.find({}, "target", function (err, captures) {
+  Capture.find({}, "target", { sort: { target: 1 } }, function (err, captures) {
     if (err) return handleError(err);
     results = [];
     captures.forEach((capture) => {
