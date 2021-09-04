@@ -37,9 +37,12 @@ exports.api = (dbUser, dbPassword, dbHost, dbPort, dbName, apiHost, apiPort) => 
 
   app.use(bodyParser.json());
   app.use(morgan('tiny')); 
-
+  app.use(express.urlencoded({
+    extended: true
+  }))
   app.use("/public", express.static(path.join(__dirname, "api/public")));
   app.use("/bootstrap", express.static(path.join(__dirname, "node_modules/bootstrap/dist")));
+  app.use("/bootstrap-icons", express.static(path.join(__dirname, "node_modules/bootstrap-icons")));
   app.use("/tablesort", express.static(path.join(__dirname, "node_modules/tablesort/dist")));
 
   app.use('/api', captureRouter);

@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^5.1.0",
+    "bootstrap-icons": "^1.5.0",
     "chalk": "^4.1.2",
     "commander": "^8.1.0",
     "dotenv": "^10.0.0",
@@ -21,8 +22,7 @@
     "mongoose": "^5.13.7",
     "morgan": "^1.10.0",
     "pug": "^3.0.2",
-    "randomstring": "^1.2.1",
-    "tablesort": "^5.2.1"
+    "randomstring": "^1.2.1"
   },
   "devDependencies": {
     "object-sizeof": "^1.6.1"

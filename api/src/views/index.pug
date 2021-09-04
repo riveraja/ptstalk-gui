@@ -4,35 +4,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/public/css/tablesort.css" rel="stylesheet">
+    <link href="/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Processlist</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">MySQL Processlist</a>
+    <form method="POST" action="/table/" style="margin:10px;">
+      <input type="hidden" id="page" name="page" value="#{page}">
+      <input type="hidden" id="pageCount" name="pageCount" value="#{pageCount}">
+      <input type="hidden" id="sortOrder" name="sortOrder" value="#{sortOrder}">
+      <input type="hidden" id="tableName" name="tableName" value="#{tableName}">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Table: #{tableName}</a>
+        </div>
+      </nav>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col">
+          <input type="text" class="form-control" size="1" id="search" name="search" placeholder="Search text..." value="#{search}">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary" id="action" name="action" value="search"><i class="bi bi-search"></i> Search Text</button>
+        </div>
       </div>
-    </nav>
-    <table class="table" id="processlist">
-      <thead>
-        <tr>
-          each column in columns 
-            th= column.text
-        </tr>
-      </thead>
-      <tbody>
-        each capture in captures
-          each row in capture.rows
+      <table class="table table-striped table-bordered" id="processlist" style="margin-top: 10px;">
+        <thead>
+          <tr>
+            each column in columns 
+              <th nowrap>
+                =column
+                button(type="submit" class="btn btn-outline-primary btn-small" id="action" name="action" style="margin: 5px;" value=column+"_SORTASC")
+                  <i class="bi bi-arrow-up-short"></i>
+                button(type="submit" class="btn btn-outline-primary btn-small" id="action" name="action" style="margin: 5px;" value=column+"_SORTDESC")
+                  <i class="bi bi-arrow-down-short"></i>
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+          each capture in captures
             <tr>
-              each col in row
+              each col in capture
                 td= col
             </tr>
-      </tbody>
-    </table>
-    <script src='/tablesort/tablesort.min.js'></script>
-    <script src='/tablesort/sorts/tablesort.number.min.js'></script>
-    <script src='/tablesort/sorts/tablesort.date.min.js'></script>
-    script. 
-      new Tablesort(document.getElementById('processlist')); 
+        </tbody>
+      </table>
+      p(align='right') 
+        <button type="submit" class="btn btn-primary" id="action" name="action" style="margin: 10px;" value="previous" #{previousDisabled}><i class="bi bi-arrow-left-short"></i></button>
+        Page #{currentPage} of #{pageCount}
+        <button type="submit" class="btn btn-primary" id="action" name="action" style="margin: 10px;" value="next" #{nextDisabled}><i class="bi bi-arrow-right-short"></i></button>
+    </form>
   </body>
 </html>
