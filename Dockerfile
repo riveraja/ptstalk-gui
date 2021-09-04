@@ -1,8 +1,9 @@
 FROM centos:7
 COPY entrypoint.sh /entrypoint.sh
 RUN \
+yum upgrade -y; \
 yum install epel-release -y; \
-yum install vim less sudo jq gcc-c++ make -y git; \
+yum install vim less sudo jq gcc-c++ make git -y; \
 yum install -y https://dl.grafana.com/oss/release/grafana-8.1.2-1.x86_64.rpm; \
 service grafana-server start; \
 grafana-cli plugins install simpod-json-datasource; \
