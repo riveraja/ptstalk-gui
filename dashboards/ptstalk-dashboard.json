@@ -75,7 +75,14 @@
           ],
           "title": "MySQL Processlist",
           "transform": "table",
-          "type": "table-old"
+          "type": "table-old",
+          "links": [
+            {
+              "title": "Processlist Table",
+              "url": "http://localhost:9000/table?tableName=processlists",
+              "targetBlank": true
+            }
+          ]
         },
         {
           "datasource": "JSON",
@@ -2085,7 +2092,7 @@
           "type": "timeseries"
         },
         {
-          "datasource": null,
+          "datasource": "JSON",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2172,7 +2179,7 @@
           "type": "timeseries"
         },
         {
-          "datasource": null,
+          "datasource": "JSON",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2305,7 +2312,7 @@
           "type": "timeseries"
         },
         {
-          "datasource": null,
+          "datasource": "JSON",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2417,7 +2424,7 @@
           "type": "timeseries"
         },
         {
-          "datasource": null,
+          "datasource": "JSON",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2543,7 +2550,7 @@
           "type": "timeseries"
         },
         {
-          "datasource": null,
+          "datasource": "JSON",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2623,7 +2630,7 @@
           "type": "timeseries"
         },
         {
-          "datasource": null,
+          "datasource": "JSON",
           "fieldConfig": {
             "defaults": {
               "color": {
