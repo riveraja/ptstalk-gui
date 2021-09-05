@@ -6,7 +6,6 @@ const chalk = require('chalk');
 const app = express();
 const mongoose = require('mongoose');
 
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const path = require('path');
@@ -36,7 +35,6 @@ exports.api = (dbUser, dbPassword, dbHost, dbPort, dbName, apiHost, apiPort) => 
   app.set('view engine', 'pug');
 
   app.use(bodyParser.json());
-  app.use(morgan('tiny')); 
   app.use(express.urlencoded({
     extended: true
   }))
