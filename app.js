@@ -41,7 +41,9 @@ async function main() {
 
     var fileByDate = [];
     fs.readdirSync(Path, 'utf8').forEach( function(file) {
-        fileByDate.push( file.replace(/(\-\w+)/g, '') );
+        if ( !Boolean(file.charAt(0).match(/[a-zA-Z]/i)) ) {
+            fileByDate.push( file.replace(/(\-\w+)/g, '') );
+        }
     })
     
     var uniqueDates = lodash.uniq(fileByDate);
