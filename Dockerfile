@@ -8,12 +8,15 @@ yum install -y https://dl.grafana.com/oss/release/grafana-8.1.2-1.x86_64.rpm; \
 service grafana-server start; \
 grafana-cli plugins install simpod-json-datasource; \
 service grafana-server restart; \
-git clone https://github.com/riveraja/ptstalk-gui /opt/ptstalk-gui; \
 yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm -y; \
 percona-release enable psmdb-44; \
 yum install percona-server-mongodb -y; \
 curl -sL https://rpm.nodesource.com/setup_14.x | bash -; \
-yum install nodejs  -y; \
+yum install nodejs  -y
+
+COPY . /opt/ptstalk-gui
+
+RUN \
 cd /opt/ptstalk-gui; \
 npm install; \
 npm link; \
