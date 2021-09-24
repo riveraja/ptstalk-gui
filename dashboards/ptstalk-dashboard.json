@@ -1,2730 +1,2556 @@
 {
-    "meta": {
-      "type": "db",
-      "canSave": true,
-      "canEdit": true,
-      "canAdmin": true,
-      "canStar": true,
-      "slug": "pt-stalk-dashboard",
-      "url": "/d/percona/pt-stalk-dashboard",
-      "expires": "0001-01-01T00:00:00Z",
-      "created": "2021-08-18T12:13:09Z",
-      "updated": "2021-08-18T12:13:09Z",
-      "updatedBy": "admin",
-      "createdBy": "admin",
-      "version": 1,
-      "hasAcl": false,
-      "isFolder": false,
-      "folderId": 0,
-      "folderUid": "",
-      "folderTitle": "General",
-      "folderUrl": "",
-      "provisioned": false,
-      "provisionedExternalId": ""
-    },
-    "dashboard": {
-      "annotations": {
-        "list": [
-          {
-            "builtIn": 1,
-            "datasource": "-- Grafana --",
-            "enable": true,
-            "hide": true,
-            "iconColor": "rgba(0, 211, 255, 1)",
-            "name": "Annotations & Alerts",
-            "type": "dashboard"
-          }
-        ]
-      },
-      "editable": true,
-      "gnetId": null,
-      "graphTooltip": 0,
-      "id": 1,
-      "links": [],
-      "panels": [
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "slug": "pt-stalk-dashboard",
+    "url": "/d/percona/pt-stalk-dashboard",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2021-09-05T10:58:09Z",
+    "updated": "2021-09-05T10:58:09Z",
+    "updatedBy": "admin",
+    "createdBy": "admin",
+    "version": 2,
+    "hasAcl": false,
+    "isFolder": false,
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": ""
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
         {
-          "columns": [],
-          "datasource": "JSON",
-          "fontSize": "100%",
-          "gridPos": {
-            "h": 14,
-            "w": 24,
-            "x": 0,
-            "y": 0
-          },
-          "id": 22,
-          "options": {
-            "showHeader": true
-          },
-          "pageSize": null,
-          "pluginVersion": "8.0.5",
-          "showHeader": true,
-          "sort": {
-            "col": 0,
-            "desc": true
-          },
-          "styles": [],
-          "targets": [
-            {
-              "data": "",
-              "queryType": "randomWalk",
-              "refId": "A",
-              "target": "processlist",
-              "type": "table"
-            }
-          ],
-          "title": "MySQL Processlist",
-          "transform": "table",
-          "type": "table-old",
-          "links": [
-            {
-              "title": "Processlist Table",
-              "url": "http://localhost:9000/table?tableName=processlists",
-              "targetBlank": true
-            }
-          ]
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Max_used_connections"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 14
-          },
-          "id": 4,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Connections_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Max_used_connections",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Connections",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 14
-          },
-          "id": 5,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Aborted_clients_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Aborted_connects_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Aborted Connections",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Threads_running"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 22
-          },
-          "id": 6,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Threads_running",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Threads_connected",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Connections_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Client Thread Activity",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 22
-          },
-          "id": 7,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Threads_created_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Threads_connected",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Threads_cached",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Thread Cache",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 30
-          },
-          "id": 8,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Created_tmp_disk_tables_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Created_tmp_files_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Created_tmp_tables_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Temporary Objects",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 30
-          },
-          "id": 9,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Slow_queries_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Slow Queries",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 38
-          },
-          "id": 10,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "table",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Select_full_join_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Select_range_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Select_range_check_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "D",
-              "target": "Select_scan_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "E",
-              "target": "Select_full_range_join_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "F",
-              "target": "Select_scan_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Select Types",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Sort_range_delta"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 38
-          },
-          "id": 11,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Sort_merge_passes_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Sort_rows_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Sort_range_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "D",
-              "target": "Sort_scan_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Sorts",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 46
-          },
-          "id": 12,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Table_locks_immediate_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Table_locks_waited_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Sort_range_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "D",
-              "target": "Sort_scan_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Table Locks",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 46
-          },
-          "id": 13,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Questions_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Queries_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Questions and Queries",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Bytes_sent_delta"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 54
-          },
-          "id": 14,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Bytes_received_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Bytes_sent_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Network",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 54
-          },
-          "id": 15,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Com_stmt_execute_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Com_update_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Com_delete_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "D",
-              "target": "Com_begin_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "E",
-              "target": "Com_insert_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Top Command Counters",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 62
-          },
-          "id": 20,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "table",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "hide": false,
-              "refId": "G",
-              "target": "Handler_read_first_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "H",
-              "target": "Handler_read_key_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "I",
-              "target": "Handler_read_last_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "J",
-              "target": "Handler_read_next_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "K",
-              "target": "Handler_read_prev_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "L",
-              "target": "Handler_read_rnd_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "M",
-              "target": "Handler_read_rnd_next_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "N",
-              "target": "Handler_rollback_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "O",
-              "target": "Handler_savepoint_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "P",
-              "target": "Handler_savepoint_rollback_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "Q",
-              "target": "Handler_update_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "R",
-              "target": "Handler_write_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Handlers",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 62
-          },
-          "id": 35,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "table",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "hide": false,
-              "refId": "G",
-              "target": "Handler_read_first_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "H",
-              "target": "Handler_read_key_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "I",
-              "target": "Handler_read_last_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "J",
-              "target": "Handler_read_next_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "K",
-              "target": "Handler_read_prev_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "L",
-              "target": "Handler_read_rnd_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "M",
-              "target": "Handler_read_rnd_next_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Handler Read",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Com_commit_delta"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 70
-          },
-          "id": 16,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Com_commit_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Com_update_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Com_rollback_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Transaction Handlers",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 70
-          },
-          "id": 17,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Open_files",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Innodb_num_open_files",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Open Files",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Table_open_cache_overflows_delta"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 78
-          },
-          "id": 18,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Table_open_cache_hits_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Table_open_cache_misses_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Table_open_cache_overflows_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Table Open Cache Status",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 12,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 2,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 78
-          },
-          "id": 19,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "pluginVersion": "8.0.5",
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Open_tables",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Opened_table_definitions_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Opened_tables_delta",
-              "type": "timeseries"
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "MySQL Table Cache",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 86
-          },
-          "id": 26,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Innodb_buffer_pool_reads_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Innodb_buffer_pool_read_requests_delta",
-              "type": "timeseries"
-            }
-          ],
-          "title": "InnoDB Buffer Pool Reads",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Innodb_data_pending_fsyncs"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 86
-          },
-          "id": 24,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Innodb_data_pending_fsyncs",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Innodb_data_pending_reads",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Innodb_data_pending_writes",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "D",
-              "target": "Innodb_os_log_pending_fsyncs",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "E",
-              "target": "Innodb_os_log_pending_writes",
-              "type": "timeseries"
-            }
-          ],
-          "title": "InnoDB IO",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Innodb_lsn_flushed_delta"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 94
-          },
-          "id": 30,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Innodb_lsn_flushed_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Innodb_lsn_current_delta",
-              "type": "timeseries"
-            }
-          ],
-          "title": "InnoDB LSN",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "Innodb_rows_deleted_delta"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 94
-          },
-          "id": 28,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Innodb_rows_inserted_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "B",
-              "target": "Innodb_rows_deleted_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "C",
-              "target": "Innodb_rows_read_delta",
-              "type": "timeseries"
-            },
-            {
-              "data": "",
-              "hide": false,
-              "refId": "D",
-              "target": "Innodb_rows_updated_delta",
-              "type": "timeseries"
-            }
-          ],
-          "title": "InnoDB Rows",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 102
-          },
-          "id": 34,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Innodb_os_log_written_delta",
-              "type": "timeseries"
-            }
-          ],
-          "title": "InnoDB OS Log",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "JSON",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 102
-          },
-          "id": 32,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "data": "",
-              "refId": "A",
-              "target": "Innodb_log_waits",
-              "type": "timeseries"
-            }
-          ],
-          "title": "Innodb Log",
-          "type": "timeseries"
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
         }
-      ],
-      "refresh": "",
-      "schemaVersion": 30,
-      "style": "dark",
-      "tags": [],
-      "templating": {
-        "list": []
+      ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "panels": [
+      {
+        "columns": [],
+        "datasource": "JSON",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 14,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 22,
+        "links": [
+          {
+            "targetBlank": true,
+            "title": "Processlist Table",
+            "url": "http://localhost:9000/table?tableName=processlists"
+          }
+        ],
+        "options": {
+          "showHeader": true
+        },
+        "pageSize": 50,
+        "pluginVersion": "8.0.5",
+        "showHeader": true,
+        "sort": {
+          "col": 0,
+          "desc": true
+        },
+        "styles": [],
+        "targets": [
+          {
+            "data": "",
+            "queryType": "randomWalk",
+            "refId": "A",
+            "target": "processlist",
+            "type": "table",
+            "payload": ""
+          }
+        ],
+        "title": "MySQL Processlist",
+        "transform": "table",
+        "type": "table-old"
       },
-      "time": {
-        "from": "now-7d",
-        "to": "now"
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 0,
+          "y": 14
+        },
+        "id": 4,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Connections_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Max_used_connections",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Connections",
+        "type": "timeseries",
+        "payload": ""
       },
-      "timepicker": {},
-      "timezone": "",
-      "title": "pt-stalk Dashboard",
-      "uid": "percona",
-      "version": 1
-    }
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 4,
+          "y": 14
+        },
+        "id": 5,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Aborted_clients_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Aborted_connects_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Aborted Connections",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 8,
+          "y": 14
+        },
+        "id": 7,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Threads_created_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Threads_connected",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Threads_cached",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Thread Cache",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 12,
+          "y": 14
+        },
+        "id": 6,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Threads_running",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Threads_connected",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Connections_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Client Thread Activity",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 16,
+          "y": 14
+        },
+        "id": 9,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Slow_queries_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Slow Queries",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 20,
+          "y": 14
+        },
+        "id": 8,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Created_tmp_disk_tables_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Created_tmp_files_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Created_tmp_tables_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Temporary Objects",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 0,
+          "y": 22
+        },
+        "id": 10,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Select_full_join_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Select_range_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Select_range_check_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "D",
+            "target": "Select_scan_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "E",
+            "target": "Select_full_range_join_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "F",
+            "target": "Select_scan_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Select Types",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 4,
+          "y": 22
+        },
+        "id": 11,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Sort_merge_passes_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Sort_rows_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Sort_range_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "D",
+            "target": "Sort_scan_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Sorts",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 8,
+          "y": 22
+        },
+        "id": 13,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Questions_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Queries_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Questions and Queries",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 12,
+          "y": 22
+        },
+        "id": 15,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Com_stmt_execute_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Com_update_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Com_delete_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "D",
+            "target": "Com_begin_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "E",
+            "target": "Com_insert_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Top Command Counters",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 16,
+          "y": 22
+        },
+        "id": 12,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Table_locks_immediate_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Table_locks_waited_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Sort_range_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "D",
+            "target": "Sort_scan_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Table Locks",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 20,
+          "y": 22
+        },
+        "id": 14,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Bytes_received_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Bytes_sent_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Network",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 0,
+          "y": 30
+        },
+        "id": 20,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "hide": false,
+            "refId": "N",
+            "target": "Handler_rollback_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "O",
+            "target": "Handler_savepoint_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "P",
+            "target": "Handler_savepoint_rollback_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "Q",
+            "target": "Handler_update_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "R",
+            "target": "Handler_write_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Handlers",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 4,
+          "y": 30
+        },
+        "id": 35,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "hide": false,
+            "refId": "G",
+            "target": "Handler_read_first_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "H",
+            "target": "Handler_read_key_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "I",
+            "target": "Handler_read_last_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "J",
+            "target": "Handler_read_next_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "K",
+            "target": "Handler_read_prev_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "L",
+            "target": "Handler_read_rnd_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "M",
+            "target": "Handler_read_rnd_next_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Handler Read",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 8,
+          "y": 30
+        },
+        "id": 17,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Open_files",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Innodb_num_open_files",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Open Files",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 12,
+          "y": 30
+        },
+        "id": 19,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Open_tables",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Opened_table_definitions_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Opened_tables_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Table Cache",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 16,
+          "y": 30
+        },
+        "id": 16,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Com_commit_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Com_update_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Com_rollback_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Transaction Handlers",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 20,
+          "y": 30
+        },
+        "id": 18,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.0.5",
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Table_open_cache_hits_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Table_open_cache_misses_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Table_open_cache_overflows_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "MySQL Table Open Cache Status",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 0,
+          "y": 38
+        },
+        "id": 26,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Innodb_buffer_pool_reads_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Innodb_buffer_pool_read_requests_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "title": "InnoDB Buffer Pool Reads",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 4,
+          "y": 38
+        },
+        "id": 24,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Innodb_data_pending_fsyncs",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Innodb_data_pending_reads",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Innodb_data_pending_writes",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "D",
+            "target": "Innodb_os_log_pending_fsyncs",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "E",
+            "target": "Innodb_os_log_pending_writes",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "title": "InnoDB IO",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 8,
+          "y": 38
+        },
+        "id": 28,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Innodb_rows_inserted_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Innodb_rows_deleted_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "C",
+            "target": "Innodb_rows_read_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "D",
+            "target": "Innodb_rows_updated_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "title": "InnoDB Rows",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 12,
+          "y": 38
+        },
+        "id": 32,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Innodb_log_waits",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "title": "Innodb Log",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 16,
+          "y": 38
+        },
+        "id": 30,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Innodb_lsn_flushed_delta",
+            "type": "timeseries",
+            "payload": ""
+          },
+          {
+            "data": "",
+            "hide": false,
+            "refId": "B",
+            "target": "Innodb_lsn_current_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "title": "InnoDB LSN",
+        "type": "timeseries",
+        "payload": ""
+      },
+      {
+        "datasource": "JSON",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 4,
+          "x": 20,
+          "y": 38
+        },
+        "id": 34,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "data": "",
+            "refId": "A",
+            "target": "Innodb_os_log_written_delta",
+            "type": "timeseries",
+            "payload": ""
+          }
+        ],
+        "title": "InnoDB OS Log",
+        "type": "timeseries",
+        "payload": ""
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 30,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-7d",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "pt-stalk Dashboard",
+    "uid": "percona",
+    "version": 1
   }
+}
