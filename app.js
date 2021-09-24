@@ -85,10 +85,9 @@ async function main() {
         var stopT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime'];
         console.log("Parsing files %s of %s sets - Start: %s | Stop: %s", counter, uniqueDates.length, startT, stopT);
 
-        if ( counter === 1 ) {
-            initTime = startT;
-        } else if ( counter === uniqueDates.length ) {
-            endTime = stopT;
+        initTime = startT;
+        if ( stopT > endTime ) {
+             endTime = stopT;
         }
 
         var outfile2 = await randfile();
