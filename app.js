@@ -147,8 +147,9 @@ async function main() {
         process.env.APIPORT
     );
 
-    const grafana_url = "http://localhost:3000/d/percona/pt-stalk-dashboard?orgId=1&from=%s&to=%s"
-    const table_url = "http://localhost:%s/table?from=%s&to=%s"
+    const grafana_url = "http://localhost:3000/d/percona/pt-stalk-dashboard?orgId=1&from=%s&to=%s";
+    const table_url = "http://localhost:%s/table?from=%s&to=%s";
+    await loadData.createProcesslistIndex(task);
     console.log(util.format(grafana_url, initTime, endTime));
     console.log(util.format(table_url, process.env.APIPORT, initTime, endTime));
     // process.exit(0)
