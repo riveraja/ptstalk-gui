@@ -9,6 +9,7 @@ service grafana-server start; \
 grafana-cli plugins install simpod-json-datasource; \
 service grafana-server restart; \
 yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm -y; \
+yum update -y; \
 percona-release enable psmdb-44; \
 yum install percona-server-mongodb -y; \
 curl -sL https://rpm.nodesource.com/setup_14.x | bash -; \

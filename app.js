@@ -87,7 +87,10 @@ async function main() {
         var stopT = JSON.parse(fs.readFileSync(outfile1, 'utf8'))[0]['stopTime'];
         console.log("Parsing files %s of %s sets - Start: %s | Stop: %s", counter, uniqueDates.length, startT, stopT);
 
-        initTime = startT;
+        if ( counter === 1) {
+            initTime = startT;
+        }
+        
         if ( stopT > endTime ) {
              endTime = stopT;
         }
